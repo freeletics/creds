@@ -8,17 +8,23 @@ Available as a gem [`active_credentials`](https://rubygems.org/gems/active_crede
 
 ## Usage
 
-Using Rails command, generate new encrypted file by `bin/rails encrypted:edit config/credentials-production.yml.enc --key config/master-production.key`
+Using Rails command, generate new encrypted file by
+```
+bin/rails encrypted:edit config/credentials-production.yml.enc --key config/master-production.key
+```
 If `config/master-production.key` doesn't exist yet, run `bin/rails generate master_key` and adjust naming to match desired one.
-Content of file can be displayed by `bin/rails encrypted:show config/credentials-production.yml.enc --key config/master-production.key`
+Content of file can be displayed by
+```
+bin/rails encrypted:show config/credentials-production.yml.enc --key config/master-production.key
+```
 
 Add to `config/environments/production.rb` (or any other env)
-```
+```ruby
 config.active_credentials = ActiveCredentials.new("config/credentials-production.yml.enc")
 ```
 
 In the code:
-```
+```ruby
 Rails.configuration.active_credentials.aws_access_key_id
 ```
 
@@ -30,7 +36,7 @@ development:
 ```
 
 Then add to `config/environments/development.rb`
-```
+```ruby
 config.active_credentials = ActiveCredentials.new("config/credentials-plain.yml", env: "development")
 ```
 
