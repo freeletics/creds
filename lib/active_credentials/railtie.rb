@@ -6,7 +6,7 @@ class ActiveCredentials::Railtie < Rails::Railtie
   # to config which is set here if present.
   initializer "active_credentials.set_secret_key_base", before: :load_config_initializers do
     if config.respond_to?(:active_credentials) && config.active_credentials.secret_key_base
-      config.secret_key_base = config.active_credentials.secret_key_base
+      Rails.configuration.secret_key_base ||= config.active_credentials.secret_key_base
     end
   end
 end
