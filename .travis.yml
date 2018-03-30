@@ -1,5 +1,10 @@
 sudo: false
 language: ruby
+cache: bundler
 rvm:
   - 2.5.0
 before_install: gem install bundler
+notifications:
+  disabled: true
+script:
+  - bundle exec rake test
