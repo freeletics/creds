@@ -1,12 +1,12 @@
 require "test_helper"
 
-class ActiveCredentialsTest < Minitest::Test
+class CredsTest < Minitest::Test
   def test_version_number
-    refute_nil ActiveCredentials::VERSION
+    refute_nil Creds::VERSION
   end
 
   def test_encrypted_file
-    credentials = ActiveCredentials.new(
+    credentials = Creds.new(
       "test/fixtures/credentials.yml.enc",
       key_path: "test/fixtures/master.key"
     )
@@ -15,7 +15,7 @@ class ActiveCredentialsTest < Minitest::Test
   end
 
   def test_plain_text_file
-    credentials = ActiveCredentials.new(
+    credentials = Creds.new(
       "test/fixtures/credentials-plain.yml",
       env: "test"
     )
@@ -24,7 +24,7 @@ class ActiveCredentialsTest < Minitest::Test
   end
 
   def test_encrypted_file_raises_error_on_missing_key_with_bang
-    credentials = ActiveCredentials.new(
+    credentials = Creds.new(
       "test/fixtures/credentials.yml.enc",
       key_path: "test/fixtures/master.key"
     )
@@ -34,7 +34,7 @@ class ActiveCredentialsTest < Minitest::Test
   end
 
   def test_plain_text_file_raises_error_on_missing_key_with_bang
-    credentials = ActiveCredentials.new(
+    credentials = Creds.new(
       "test/fixtures/credentials-plain.yml",
       env: "test"
     )
@@ -44,7 +44,7 @@ class ActiveCredentialsTest < Minitest::Test
   end
 
   def test_encrypted_file_returns_config_as_hash
-    credentials = ActiveCredentials.new(
+    credentials = Creds.new(
       "test/fixtures/credentials.yml.enc",
       key_path: "test/fixtures/master.key"
     )
@@ -52,7 +52,7 @@ class ActiveCredentialsTest < Minitest::Test
   end
 
   def test_plain_text_file_returns_config_as_hash
-    credentials = ActiveCredentials.new(
+    credentials = Creds.new(
       "test/fixtures/credentials-plain.yml",
       env: "test"
     )
@@ -60,7 +60,7 @@ class ActiveCredentialsTest < Minitest::Test
   end
 
   def test_plain_test_allows_to_embed_ruby
-    credentials = ActiveCredentials.new(
+    credentials = Creds.new(
       "test/fixtures/credentials-plain.yml",
       env: "test"
     )

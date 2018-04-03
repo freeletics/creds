@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    active_credentials (0.1.0)
+    creds (0.1.0)
       activesupport (>= 5.2.0.rc2)
 
 GEM
@@ -25,8 +25,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_credentials!
   bundler (>= 1.16)
+  creds!
   minitest (>= 5.0)
   rake (>= 10.0)
 

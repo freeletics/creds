@@ -1,13 +1,13 @@
-require "active_credentials/version"
-require "active_credentials/plain_configuration"
+require "creds/version"
+require "creds/plain_configuration"
 
 require "active_support/core_ext/module/attribute_accessors" # https://github.com/rails/rails/pull/32383
 require "active_support/core_ext/module/delegation"
 require "active_support/encrypted_configuration"
 
-require "active_credentials/railtie" if defined?(Rails)
+require "creds/railtie" if defined?(Rails)
 
-class ActiveCredentials
+class Creds
   delegate_missing_to :configuration
 
   def initialize(file_path, key_path: "config/master.key", env_key: "RAILS_MASTER_KEY", raise_if_missing_key: true, env: nil)
@@ -27,7 +27,7 @@ class ActiveCredentials
         raise_if_missing_key: @raise_if_missing_key
       )
     else
-      ActiveCredentials::PlainConfiguration.new(@file_path, env: @env)
+      Creds::PlainConfiguration.new(@file_path, env: @env)
     end
   end
 end

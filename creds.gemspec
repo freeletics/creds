@@ -1,17 +1,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "active_credentials/version"
+require "creds/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "active_credentials"
-  spec.version       = ActiveCredentials::VERSION
+  spec.name          = "creds"
+  spec.version       = Creds::VERSION
   spec.authors       = ["Wojciech Wnętrzak"]
   spec.email         = ["w.wnetrzak@gmail.com", "eng@freeletics.com"]
 
   spec.summary       = %q{Encrypted Credentials for multiple environments}
   spec.description   = %q{Unified interface for encrypted credentials and plain text file based}
-  spec.homepage      = "https://github.com/freeletics/active_credentials"
+  spec.homepage      = "https://github.com/freeletics/creds"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|

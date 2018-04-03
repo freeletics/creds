@@ -1,10 +1,10 @@
-# Active Credentials
+# Creds
 
 Manage encrypted credentials (added in Rails 5.2.0) with multiple environments.
 
 ## Installation
 
-Available as a gem [`active_credentials`](https://rubygems.org/gems/active_credentials)
+Available as a gem [`creds`](https://rubygems.org/gems/creds)
 
 ## Usage
 
@@ -20,12 +20,12 @@ bin/rails encrypted:show config/credentials-production.yml.enc --key config/mast
 
 Add to `config/environments/production.rb` (or any other env)
 ```ruby
-config.active_credentials = ActiveCredentials.new("config/credentials-production.yml.enc")
+config.creds = Creds.new("config/credentials-production.yml.enc")
 ```
 
 In the code:
 ```ruby
-Rails.configuration.active_credentials.aws_access_key_id
+Rails.configuration.creds.aws_access_key_id
 ```
 
 To ease working in development/test environments with the same API, add `config/credentials-plain.yml` with key/value pairs
@@ -37,13 +37,13 @@ development:
 
 Then add to `config/environments/development.rb`
 ```ruby
-config.active_credentials = ActiveCredentials.new("config/credentials-plain.yml", env: "development")
+config.creds = Creds.new("config/credentials-plain.yml", env: "development")
 ```
 
 ### Additions
 
-* To raise error in case of missing key you can add bang to the name, like `Rails.configuration.active_storage.database_url!`
-* To list all defined key/value pairs call `config`, like `Rails.configuration.active_storage.config`
+* To raise error in case of missing key you can add bang to the name, like `Rails.configuration.creds.database_url!`
+* To list all defined key/value pairs call `config`, like `Rails.configuration.creds.config`
 * If `secret_key_base` is specified in credentials file, it will be assigned to `Rails.configuration.secret_key_base`, as it is required by Rails
 
 ## Development
@@ -56,7 +56,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/freeletics/active_credentials
+Bug reports and pull requests are welcome on GitHub at https://github.com/freeletics/creds
 
 ## License
 

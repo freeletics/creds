@@ -6,7 +6,7 @@ require "active_support/core_ext/hash/keys"
 require "active_support/ordered_options"
 require "active_support/core_ext/module/delegation"
 
-class ActiveCredentials::PlainConfiguration
+class Creds::PlainConfiguration
   delegate_missing_to :options
 
   def initialize(file_path, env:)
