@@ -48,7 +48,7 @@ config.creds = Creds.new("config/credentials-plain.yml", env: "development")
 
 ## Development
 
-[![Build Status](https://travis-ci.org/freeletics/active_credentials.svg?branch=master)](https://travis-ci.org/freeletics/active_credentials)
+[![Build Status](https://travis-ci.org/freeletics/creds.svg?branch=master)](https://travis-ci.org/freeletics/creds)
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
