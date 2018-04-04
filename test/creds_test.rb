@@ -59,6 +59,22 @@ class CredsTest < Minitest::Test
     assert_equal({artist: "Bart", embeded: 3}, credentials.configuration.config)
   end
 
+  def test_encrypted_file_can_be_accessed_as_hash
+    credentials = Creds.new(
+      "test/fixtures/credentials.yml.enc",
+      key_path: "test/fixtures/master.key"
+    )
+    assert_equal "El Barto", credentials[:artist]
+  end
+
+  def test_plain_text_file_can_be_accessed_as_hash
+    credentials = Creds.new(
+      "test/fixtures/credentials-plain.yml",
+      env: "test"
+    )
+    assert_equal "Bart", credentials[:artist]
+  end
+
   def test_plain_test_allows_to_embed_ruby
     credentials = Creds.new(
       "test/fixtures/credentials-plain.yml",

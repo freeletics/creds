@@ -44,6 +44,7 @@ config.creds = Creds.new("config/credentials-plain.yml", env: "development")
 
 * To raise error in case of missing key you can add bang to the name, like `Rails.configuration.creds.database_url!`
 * To list all defined key/value pairs call `config`, like `Rails.configuration.creds.config`
+* Plain text file can embed Ruby (`<%= %>`), but not encrypted one
 * If `secret_key_base` is specified in credentials file, it will be assigned to `Rails.configuration.secret_key_base`, as it is required by Rails
 
 ## Development
