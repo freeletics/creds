@@ -12,6 +12,12 @@ Using Rails command, generate new encrypted file by
 ```
 bin/rails encrypted:edit config/credentials-production.yml.enc --key config/master-production.key
 ```
+
+add some content in opened editor (note there is no environment root key, ie no `production`):
+```yaml
+aws_access_key_id: my-access-key-id
+```
+
 If `config/master-production.key` doesn't exist yet, run `bin/rails generate master_key` and adjust naming to match desired one.
 Content of file can be displayed by
 ```
