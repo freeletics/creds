@@ -1,7 +1,6 @@
 require "creds/version"
 require "creds/plain_configuration"
 
-require "active_support/core_ext/module/attribute_accessors" # https://github.com/rails/rails/pull/32383
 require "active_support/core_ext/module/delegation"
 require "active_support/encrypted_configuration"
 
