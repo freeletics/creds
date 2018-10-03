@@ -10,7 +10,7 @@ Available as a gem [`creds`](https://rubygems.org/gems/creds)
 
 Using Rails command, generate new encrypted file by
 ```
-bin/rails encrypted:edit config/credentials-production.yml.enc --key config/master-production.key
+bin/rails encrypted:edit config/credentials/production.yml.enc --key config/credentials/production.key
 ```
 
 add some content in opened editor (note there is no environment root key, ie no `production`):
@@ -18,15 +18,15 @@ add some content in opened editor (note there is no environment root key, ie no 
 aws_access_key_id: my-access-key-id
 ```
 
-If `config/master-production.key` doesn't exist yet, run `bin/rails generate master_key` and adjust naming to match desired one.
+If `config/credentials/production.key` doesn't exist yet, run `bin/rails generate master_key` and adjust naming to match desired one.
 Content of file can be displayed by
 ```
-bin/rails encrypted:show config/credentials-production.yml.enc --key config/master-production.key
+bin/rails encrypted:show config/credentials/production.yml.enc --key config/credentials/production.key
 ```
 
 Add to `config/environments/production.rb` (or any other env)
 ```ruby
-config.creds = Creds.new("config/credentials-production.yml.enc")
+config.creds = Creds.new("config/credentials/production.yml.enc")
 ```
 
 In the code:
@@ -34,7 +34,7 @@ In the code:
 Rails.configuration.creds.aws_access_key_id
 ```
 
-To ease working in development/test environments with the same API, add `config/credentials-plain.yml` with key/value pairs
+To ease working in development/test environments with the same API, add `config/credentials/plain.yml` with key/value pairs
 nested under environment name, like:
 ```yml
 development:
@@ -43,8 +43,13 @@ development:
 
 Then add to `config/environments/development.rb`
 ```ruby
-config.creds = Creds.new("config/credentials-plain.yml", env: "development")
+config.creds = Creds.new("config/credentials/plain.yml", env: "development")
 ```
+
+### Rails 6.0
+
+In Rails 6.0 it is possible to edit files by `rails credentials:edit --environment production` which will look for
+`config/credentials/production.yml.enc` encrypted by `ENV["RAILS_MASTER_KEY"]` or `config/credentials/production.key`
 
 ### Additions
 
