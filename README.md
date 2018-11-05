@@ -29,6 +29,11 @@ Add to `config/environments/production.rb` (or any other env)
 config.creds = Creds.new("config/credentials/production.yml.enc")
 ```
 
+If wants to use key from custom path - by default it checks `RAILS_MASTER_KEY` env key and `config/master.key` file:
+```ruby
+config.creds = Creds.new("config/credentials/production.yml.enc", key_path: "config/credentials/production.key")
+```
+
 In the code:
 ```ruby
 Rails.configuration.creds.aws_access_key_id
