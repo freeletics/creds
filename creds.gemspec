@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Wojciech Wnętrzak"]
   spec.email         = ["w.wnetrzak@gmail.com", "eng@freeletics.com"]
 
-  spec.summary       = %q{Encrypted Credentials for multiple environments}
+  spec.summary       = %q{Encrypted credentials for multiple environments}
   spec.description   = %q{Unified interface for encrypted credentials and plain text file based}
   spec.homepage      = "https://github.com/freeletics/creds"
   spec.license       = "MIT"
