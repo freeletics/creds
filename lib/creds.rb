@@ -17,6 +17,10 @@ class Creds
     @env                  = env
   end
 
+  def [](key)
+    configuration[key.to_sym]
+  end
+
   def configuration
     @configuration ||= if @file_path.end_with?(".enc")
       ActiveSupport::EncryptedConfiguration.new(
